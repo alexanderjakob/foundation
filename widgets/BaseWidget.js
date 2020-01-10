@@ -31,6 +31,31 @@ export default class BaseWidget extends EventsWidget {
 
         return (vertical && horizontal);
     }
+    setCookie (name, value, expireDays = 1) {
+        const date = new Date();
+
+        date.setTime(date.getTime() + (expireDays * 24 * 60 * 60 * 1000));
+
+        document.cookie = `${name}=${value};expires=${date.toUTCString()};path=/`;
+    }
+    getCookie (cookie) {
+        const name = `${cookie}=`;
+        const decodedCookie = decodeURIComponent(document.cookie).split(';');
+
+        for (let i = 0; i < decodedCookie.length; i++) {
+            let c = decodedCookie[i];
+
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+
+        return null;
+    }
     logger (message) {
         /* eslint-disable */
         if (this.debug === true) {
