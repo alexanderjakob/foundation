@@ -16,6 +16,10 @@ export default class RequestWidget extends BaseWidget {
     getRequest (url) {
         return fetch(url, {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
                 body: this.options.data
             }).then((response) => {
                 return response.json();
