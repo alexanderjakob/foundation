@@ -7,15 +7,25 @@ export default class RequestWidget extends BaseWidget {
         this.options = Object.assign({
             id: 'RequestWidget',
             url: '',
+            headers: {},
             data: [],
-            onSuccess: () => {}
+            onSuccess: () => {},
+            defaultOptions: {
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            }
         }, options);
 
         this.request = this.getRequest(this.options.url);
     }
+    getHeaders () {
+        return Object.assign({}, this.options.defaultOptions.headers, this.options.headers);
+    }
     getRequest (url) {
         return fetch(url, {
                 method: 'POST',
+                headers: this.getHeaders(),
                 body: this.options.data
             }).then((response) => {
                 return response.json();
