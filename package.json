@@ -1,6 +1,6 @@
 {
   "name": "alexanderjakob.foundation",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/alexanderjakob/foundation/issues"
   },
-  "homepage": "https://github.com/alexanderjakob/foundation#readme"
+  "homepage": "https://github.com/alexanderjakob/foundation#readme",
+  "devDependencies": {
+    "stylelint": "^13.0.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "eslint": "^6.8.0"
+  }
 }
