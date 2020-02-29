@@ -1,23 +1,16 @@
-import BaseWidget from './BaseWidget';
+import EventsWidget from './EventsWidget';
 
-export default class TrackingWidget extends BaseWidget {
+export default class TrackingWidget extends EventsWidget {
     constructor (options) {
         super();
 
-        this.options = Object.assign({
-            id: 'TrackingWidget',
-            containerId: ''
-        }, options);
+        this.containerId = options.containerId;
     }
     listeners () {
-        this.subscribe('onCookiesAccepted', this._onCookiesAccepted.bind(this));
+        this.subscribe('onCookiesAccepted', this._onCookiesAccepted);
     }
     init () {
-        if (this.options.containerId === null) {
-            return;
-        }
-
-        this.setGoogleTagManager(this.options.containerId);
+        this.setGoogleTagManager(this.containerId);
     }
     setGoogleTagManager (containerId) {
         if (navigator.doNotTrack !== 1 && navigator.doNotTrack !== 'yes' && window.doNotTrack !== 1 && navigator.msDoNotTrack !== 1) {
@@ -25,7 +18,7 @@ export default class TrackingWidget extends BaseWidget {
         }
     }
     getMarkup (containerId) {
-        let script = document.createElement('script');
+        const script = document.createElement('script');
 
         script.innerHTML = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

@@ -1,10 +1,10 @@
 {
   "name": "alexanderjakob.foundation",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/alexanderjakob/foundation/issues"
   },
-  "homepage": "https://github.com/alexanderjakob/foundation#readme"
+  "homepage": "https://github.com/alexanderjakob/foundation#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
+    "@testing-library/jest-dom": "^5.1.1",
+    "babel-jest": "^25.1.0",
+    "jest": "^25.1.0"
+  }
 }
