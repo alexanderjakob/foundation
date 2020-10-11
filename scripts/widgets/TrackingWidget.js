@@ -5,9 +5,8 @@ export default class TrackingWidget extends EventsWidget {
         super();
 
         this.containerId = options.containerId;
-    }
-    listeners () {
-        this.subscribe('onCookiesAccepted', this._onCookiesAccepted);
+
+        this.subscribe('onCookiesAccepted', this._onCookiesAccepted.bind(this));
     }
     init () {
         this.setGoogleTagManager(this.containerId);
