@@ -21,6 +21,10 @@ export default class CookieBannerWidget extends EventsWidget {
 
         this.element = options.element; // [data-cookie-banner]
 
+        if (this.element === null) {
+            return;
+        }
+
         this.acceptButton = this.element.querySelector('[data-cookie-banner-accept]');
         this.declineButton = this.element.querySelector('[data-cookie-banner-decline]');
 
