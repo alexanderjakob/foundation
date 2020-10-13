@@ -5,11 +5,7 @@ export default class CookieBannerWidget extends EventsWidget {
     constructor (options) {
         super();
 
-        this.element = options.element; // [data-cookie-banner]
         this.cookieName = options.cookieName;
-
-        this.acceptButton = this.element.querySelector('[data-cookie-banner-accept]');
-        this.declineButton = this.element.querySelector('[data-cookie-banner-decline]');
 
         this.cookieBannerCookie = new CookieWidget({
             expireDays: 7
@@ -22,6 +18,11 @@ export default class CookieBannerWidget extends EventsWidget {
 
             return;
         }
+
+        this.element = options.element; // [data-cookie-banner]
+
+        this.acceptButton = this.element.querySelector('[data-cookie-banner-accept]');
+        this.declineButton = this.element.querySelector('[data-cookie-banner-decline]');
 
         this.show(this.element);
         this.init();
