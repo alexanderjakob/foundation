@@ -8,12 +8,13 @@ export default class CookieBannerWidget extends EventsWidget {
         this.cookieName = options.cookieName;
 
         this.cookieBannerCookie = new CookieWidget({
+            name: this.cookieName,
             expireDays: 7
         });
 
-        this.cookieBannerCookie.setName(this.cookieName);
+        const currentValue = this.cookieBannerCookie.get();
 
-        if (this.cookieBannerCookie.get() !== '') {
+        if (currentValue === 'true') {
             this.publish('onCookiesAccepted');
 
             return;
@@ -21,7 +22,7 @@ export default class CookieBannerWidget extends EventsWidget {
 
         this.element = options.element; // [data-cookie-banner]
 
-        if (this.element === null) {
+        if (this.element === null || currentValue === 'false') {
             return;
         }
 
